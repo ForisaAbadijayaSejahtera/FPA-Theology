@@ -11,6 +11,7 @@
             --gold: #C9A84C;
             --gold-light: #E8D5A3;
             --gold-dark: #A68B3C;
+            --gold-glow: rgba(201, 168, 76, 0.4);
             --navy: #1A1F3C;
             --navy-light: #2A3050;
             --navy-dark: #0F1320;
@@ -20,6 +21,7 @@
             --text-light: #F5F0E8;
             --accent-red: #8B3A3A;
             --success: #2D6A4F;
+            --selected-bg: rgba(201, 168, 76, 0.15);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,6 +33,15 @@
             line-height: 1.7;
             overflow-x: hidden;
         }
+
+        /* ============================================
+           CARA GANTI LOGO NAVBAR:
+           1. Siapkan gambar logo Anda (PNG dengan transparansi)
+           2. Upload ke hosting (Imgur, Cloudinary, atau folder lokal)
+           3. Ganti <i class="fas fa-cross"></i> di navbar menjadi:
+              <img src="URL_LOGO_ANDA.png" alt="FPA Logo" class="nav-logo-img">
+           4. Jika pakai folder lokal: <img src="images/logo.png" ...>
+        ============================================ */
 
         /* Navigation */
         nav {
@@ -66,6 +77,12 @@
             gap: 0.5rem;
         }
         .logo i { font-size: 1.5rem; }
+        /* Style untuk logo gambar (aktifkan jika pakai img) */
+        .nav-logo-img {
+            height: 32px;
+            width: auto;
+            border-radius: 4px;
+        }
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -129,6 +146,18 @@
             color: var(--gold);
             margin-bottom: 1.5rem;
             animation: float 3s ease-in-out infinite;
+        }
+        /* ============================================
+           CARA GANTI GAMBAR GEREJA DI HERO:
+           1. Siapkan gambar gereja Anda (PNG transparan atau JPG)
+           2. Ganti <i class="fas fa-church"></i> di bawah menjadi:
+              <img src="URL_GAMBAR_GEREJA.png" alt="Church" class="hero-church-img">
+           3. Style .hero-church-img sudah didefinisikan di bawah
+        ============================================ */
+        .hero-church-img {
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
         }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -272,6 +301,20 @@
             justify-content: center;
             color: var(--gold);
             font-size: 5rem;
+            overflow: hidden;
+        }
+        /* ============================================
+           CARA GANTI GAMBAR DI ABOUT SYSTEM:
+           1. Siapkan gambar tentang sistem/jejaring gereja
+           2. Ganti <i class="fas fa-book-bible"></i> di img-frame-inner
+              menjadi <img src="URL_GAMBAR_ABOUT.jpg" class="about-img">
+           3. Style .about-img sudah didefinisikan di bawah
+        ============================================ */
+        .about-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
         }
         .about-image::before {
             content: '';
@@ -301,7 +344,7 @@
         }
         .degree-card {
             background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(201, 168, 76, 0.2);
+            border: 2px solid rgba(201, 168, 76, 0.2);
             border-radius: 15px;
             padding: 2.5rem;
             text-align: center;
@@ -324,6 +367,29 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             border-color: var(--gold);
         }
+
+        /* ============================================
+           STYLE BARU: Visual feedback ketika card DISELECT
+           - Border glow gold
+           - Background berubah
+           - Scale sedikit
+           - Shadow lebih kuat
+        ============================================ */
+        .degree-card.card-selected {
+            border-color: var(--gold) !important;
+            border-width: 2px;
+            background: var(--selected-bg) !important;
+            box-shadow: 0 0 30px var(--gold-glow), 0 20px 40px rgba(0,0,0,0.3) !important;
+            transform: translateY(-10px) scale(1.02);
+        }
+        .degree-card.card-selected::before {
+            transform: scaleX(1);
+        }
+        .degree-card.card-selected .degree-icon {
+            transform: scale(1.15);
+            transition: transform 0.3s ease;
+        }
+
         .degree-level {
             display: inline-block;
             background: var(--gold);
@@ -340,6 +406,7 @@
             font-size: 3rem;
             color: var(--gold);
             margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
         }
         .degree-card h3 {
             font-family: 'Cinzel', serif;
@@ -620,6 +687,12 @@
             background: rgba(201, 168, 76, 0.1);
             border-color: var(--gold);
         }
+        /* Style ketika checkbox di form tercentang */
+        .checkbox-item.form-selected {
+            background: rgba(201, 168, 76, 0.15) !important;
+            border-color: var(--gold) !important;
+            box-shadow: 0 0 10px rgba(201, 168, 76, 0.2);
+        }
         .checkbox-item input[type="checkbox"] {
             width: 20px;
             height: 20px;
@@ -809,8 +882,12 @@
                 padding: 0.8rem 1.2rem;
                 font-size: 0.9rem;
             }
+            .degree-card.card-selected {
+                transform: translateY(-5px) scale(1.01);
+            }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -818,6 +895,18 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
+                <!-- ============================================
+                     GANTI LOGO NAVBAR DI SINI
+                     
+                     Cara 1 - Pakai gambar dari URL:
+                     <img src="https://your-domain.com/logo.png" alt="FPA Logo" class="nav-logo-img">
+                     
+                     Cara 2 - Pakai gambar lokal (folder images):
+                     <img src="images/logo-fpa.png" alt="FPA Logo" class="nav-logo-img">
+                     
+                     Cara 3 - Biarkan icon salib (default):
+                     <i class="fas fa-cross"></i>
+                ============================================ -->
                 <i class="fas fa-cross"></i>
                 <span>FPA - ETFDS</span>
             </a>
@@ -840,6 +929,18 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-icon">
+                <!-- ============================================
+                     GANTI GAMBAR GEREJA DI HERO DI SINI
+                     
+                     Cara 1 - Pakai gambar dari URL:
+                     <img src="https://your-domain.com/church.png" alt="Church" class="hero-church-img">
+                     
+                     Cara 2 - Pakai gambar lokal:
+                     <img src="images/gereja-hero.png" alt="Church" class="hero-church-img">
+                     
+                     Cara 3 - Biarkan icon gereja (default):
+                     <i class="fas fa-church"></i>
+                ============================================ -->
                 <i class="fas fa-church"></i>
             </div>
             <h1>FPA - Ecclesiastical Theological Formation Degree System</h1>
@@ -872,6 +973,21 @@
             <div class="about-image">
                 <div class="img-frame">
                     <div class="img-frame-inner">
+                        <!-- ============================================
+                             GANTI GAMBAR ABOUT SYSTEM DI SINI
+                             
+                             Cara 1 - Pakai gambar dari URL:
+                             <img src="https://your-domain.com/about-image.jpg" alt="About" class="about-img">
+                             
+                             Cara 2 - Pakai gambar lokal:
+                             <img src="images/about-system.jpg" alt="About" class="about-img">
+                             
+                             Cara 3 - Biarkan icon book-bible (default):
+                             <i class="fas fa-book-bible"></i>
+                             
+                             TIPS: Gunakan gambar dengan rasio 4:3 atau 1:1
+                             dan resolusi minimal 600x400 pixel untuk hasil optimal.
+                        ============================================ -->
                         <i class="fas fa-book-bible"></i>
                     </div>
                 </div>
@@ -887,7 +1003,8 @@
             <p>Three levels of theological formation for comprehensive ministry preparation</p>
         </div>
         <div class="degree-cards">
-            <div class="degree-card fade-in" data-degree="bachelor">
+            <!-- Bachelor Card -->
+            <div class="degree-card fade-in" data-degree="bachelor" id="card-bachelor">
                 <span class="degree-level">Level 1</span>
                 <div class="degree-icon">
                     <i class="fas fa-graduation-cap"></i>
@@ -895,11 +1012,12 @@
                 <h3>Bachelor of Theology</h3>
                 <p><em>(Formation Degree)</em></p>
                 <p>Foundation in biblical studies, discipleship, and ministry basics. Designed for those beginning their journey in theological education and ministry preparation.</p>
-                <button class="degree-select-btn" onclick="toggleDegree(this, 'Bachelor of Theology (Formation Degree)')">
+                <button class="degree-select-btn" onclick="toggleDegree(this, 'Bachelor of Theology (Formation Degree)')" id="btn-bachelor">
                     <i class="fas fa-plus"></i> Select This Program
                 </button>
             </div>
-            <div class="degree-card fade-in" data-degree="master">
+            <!-- Master Card -->
+            <div class="degree-card fade-in" data-degree="master" id="card-master">
                 <span class="degree-level">Level 2</span>
                 <div class="degree-icon">
                     <i class="fas fa-user-tie"></i>
@@ -907,11 +1025,12 @@
                 <h3>Master of Theology</h3>
                 <p><em>(Advanced Formation Degree)</em></p>
                 <p>Advanced theology, pastoral leadership, and ministry development. For those seeking deeper theological understanding and enhanced leadership capabilities.</p>
-                <button class="degree-select-btn" onclick="toggleDegree(this, 'Master of Theology (Advanced Formation Degree)')">
+                <button class="degree-select-btn" onclick="toggleDegree(this, 'Master of Theology (Advanced Formation Degree)')" id="btn-master">
                     <i class="fas fa-plus"></i> Select This Program
                 </button>
             </div>
-            <div class="degree-card fade-in" data-degree="doctor">
+            <!-- Doctor Card -->
+            <div class="degree-card fade-in" data-degree="doctor" id="card-doctor">
                 <span class="degree-level">Level 3</span>
                 <div class="degree-icon">
                     <i class="fas fa-crown"></i>
@@ -919,7 +1038,7 @@
                 <h3>Doctor of Theology</h3>
                 <p><em>(Senior Formation Degree)</em></p>
                 <p>Advanced ecclesiastical leadership, teaching, and ministry oversight. The highest level of formation for senior church leaders and theological educators.</p>
-                <button class="degree-select-btn" onclick="toggleDegree(this, 'Doctor of Theology (Senior Formation Degree)')">
+                <button class="degree-select-btn" onclick="toggleDegree(this, 'Doctor of Theology (Senior Formation Degree)')" id="btn-doctor">
                     <i class="fas fa-plus"></i> Select This Program
                 </button>
             </div>
@@ -988,9 +1107,22 @@
                 <p>Fill out the form below to connect with our admin team. Select your desired program level(s) and let us guide you through the next steps.</p>
             </div>
             <div class="contact-form fade-in" id="contactForm">
-                <!-- ============================================ -->
-                <!-- GANTI YOUR_FORM_ID DENGAN ID FORMSPREE ANDA -->
-                <!-- ============================================ -->
+                <!-- ============================================
+                     KONFIGURASI FORMSPREE
+                     
+                     Form sudah dikonfigurasi ke endpoint Formspree Anda.
+                     Endpoint saat ini: https://formspree.io/f/xojzplgn
+                     
+                     Cara kerja:
+                     1. User klik "Send Application to Admin"
+                     2. Data form dikirim ke server Formspree
+                     3. Formspree meneruskan ke email admin yang terdaftar
+                     4. User melihat pesan sukses di halaman
+                     
+                     Untuk mengganti endpoint Formspree:
+                     Ganti action="https://formspree.io/f/xojzplgn" dengan
+                     action="https://formspree.io/f/ID_FORM_ANDA"
+                ============================================ -->
                 <form id="applicationForm" action="https://formspree.io/f/xojzplgn" method="POST">
                     <div class="form-group">
                         <label for="fullName">Full Name <span class="required">*</span></label>
@@ -1015,21 +1147,21 @@
                     <div class="form-group">
                         <label>Select Program Level(s) <span class="required">*</span> <small style="color: var(--cream-dark); font-weight: 400;">(You may select more than one)</small></label>
                         <div class="checkbox-group">
-                            <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <div class="checkbox-item" onclick="toggleCheckbox(this)" id="form-item-bachelor">
                                 <input type="checkbox" name="programs[]" value="Bachelor of Theology (Formation Degree)" id="prog-bachelor" onchange="event.stopPropagation()">
                                 <div>
                                     <label for="prog-bachelor">Bachelor of Theology (Formation Degree)</label>
                                     <div class="check-desc">Level 1 — Foundation in biblical studies and ministry basics</div>
                                 </div>
                             </div>
-                            <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <div class="checkbox-item" onclick="toggleCheckbox(this)" id="form-item-master">
                                 <input type="checkbox" name="programs[]" value="Master of Theology (Advanced Formation Degree)" id="prog-master" onchange="event.stopPropagation()">
                                 <div>
                                     <label for="prog-master">Master of Theology (Advanced Formation Degree)</label>
                                     <div class="check-desc">Level 2 — Advanced theology and pastoral leadership</div>
                                 </div>
                             </div>
-                            <div class="checkbox-item" onclick="toggleCheckbox(this)">
+                            <div class="checkbox-item" onclick="toggleCheckbox(this)" id="form-item-doctor">
                                 <input type="checkbox" name="programs[]" value="Doctor of Theology (Senior Formation Degree)" id="prog-doctor" onchange="event.stopPropagation()">
                                 <div>
                                     <label for="prog-doctor">Doctor of Theology (Senior Formation Degree)</label>
@@ -1057,6 +1189,8 @@
                     <!-- Hidden fields for Formspree -->
                     <input type="hidden" name="_subject" value="New ETFDS Application">
                     <input type="hidden" name="_template" value="table">
+                    <!-- Redirect kembali ke halaman setelah submit -->
+                    <input type="hidden" name="_next" value="">
 
                     <button type="submit" class="submit-btn" id="submitBtn">
                         <i class="fas fa-paper-plane"></i> Send Application to Admin
@@ -1090,7 +1224,7 @@
         </div>
         <div class="footer-divider"></div>
         <p class="footer-text">Equipping Christian leaders, pastors, and ministers for faithful ministry service through structured theological formation.</p>
-        <p class="copyright">&copy; 2026 Ecclesiastical Theological Formation Degree System. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 FPA - Ecclesiastical Theological Formation Degree System. All rights reserved.</p>
     </footer>
 
     <!-- Floating CTA -->
@@ -1099,8 +1233,19 @@
     </button>
 
     <script>
+        // ============================================
+        // JAVASCRIPT YANG DIPERBAIKI
+        // ============================================
+
         // Selected degrees tracker
         let selectedDegrees = new Set();
+
+        // Mapping degree name ke element ID
+        const degreeMap = {
+            'Bachelor of Theology (Formation Degree)': { card: 'card-bachelor', btn: 'btn-bachelor', checkbox: 'prog-bachelor', formItem: 'form-item-bachelor', type: 'bachelor' },
+            'Master of Theology (Advanced Formation Degree)': { card: 'card-master', btn: 'btn-master', checkbox: 'prog-master', formItem: 'form-item-master', type: 'master' },
+            'Doctor of Theology (Senior Formation Degree)': { card: 'card-doctor', btn: 'btn-doctor', checkbox: 'prog-doctor', formItem: 'form-item-doctor', type: 'doctor' }
+        };
 
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
@@ -1144,23 +1289,44 @@
             });
         });
 
-        // Toggle degree selection from cards
+        // ============================================
+        // FUNGSI TOGGLE DEGREE - DIPERBAIKI
+        // ============================================
         function toggleDegree(btn, degreeName) {
-            const card = btn.closest('.degree-card');
-            const checkboxId = degreeName.includes('Bachelor') ? 'prog-bachelor' :
-                              degreeName.includes('Master') ? 'prog-master' : 'prog-doctor';
-            const checkbox = document.getElementById(checkboxId);
+            const mapping = degreeMap[degreeName];
+            if (!mapping) return;
+
+            const card = document.getElementById(mapping.card);
+            const checkbox = document.getElementById(mapping.checkbox);
+            const formItem = document.getElementById(mapping.formItem);
 
             if (selectedDegrees.has(degreeName)) {
+                // UNSELECT
                 selectedDegrees.delete(degreeName);
                 btn.classList.remove('selected');
                 btn.innerHTML = '<i class="fas fa-plus"></i> Select This Program';
+                if (card) card.classList.remove('card-selected');
                 if (checkbox) checkbox.checked = false;
+                if (formItem) formItem.classList.remove('form-selected');
             } else {
+                // SELECT
                 selectedDegrees.add(degreeName);
                 btn.classList.add('selected');
                 btn.innerHTML = '<i class="fas fa-check"></i> Selected';
+                if (card) card.classList.add('card-selected');
                 if (checkbox) checkbox.checked = true;
+                if (formItem) formItem.classList.add('form-selected');
+
+                // AUTO-SCROLL ke form dengan smooth animation
+                setTimeout(() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                        contactSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 400); // Delay sedikit agar user melihat card berubah dulu
             }
         }
 
@@ -1173,38 +1339,54 @@
             if (formCheckbox) formCheckbox.checked = checkbox.checked;
         }
 
-        // Toggle checkbox item styling
+        // ============================================
+        // TOGGLE CHECKBOX - DIPERBAIKI dengan 2-way sync
+        // ============================================
         function toggleCheckbox(item) {
             const checkbox = item.querySelector('input[type="checkbox"]');
             checkbox.checked = !checkbox.checked;
 
-            // Update degree card buttons if applicable
+            // Update visual style pada form item
+            if (checkbox.checked) {
+                item.classList.add('form-selected');
+            } else {
+                item.classList.remove('form-selected');
+            }
+
+            // Sync ke degree card (2-way binding)
             const value = checkbox.value;
             if (value && value.includes('Bachelor')) {
-                updateCardButton('bachelor', checkbox.checked);
+                syncCardWithForm('bachelor', checkbox.checked);
             } else if (value && value.includes('Master')) {
-                updateCardButton('master', checkbox.checked);
+                syncCardWithForm('master', checkbox.checked);
             } else if (value && value.includes('Doctor')) {
-                updateCardButton('doctor', checkbox.checked);
+                syncCardWithForm('doctor', checkbox.checked);
             }
         }
 
-        function updateCardButton(degreeType, isSelected) {
-            const card = document.querySelector(`[data-degree="${degreeType}"]`);
-            if (!card) return;
-            const btn = card.querySelector('.degree-select-btn');
+        // Sinkronisasi card dengan checkbox form
+        function syncCardWithForm(degreeType, isSelected) {
             const degreeName = degreeType === 'bachelor' ? 'Bachelor of Theology (Formation Degree)' :
                               degreeType === 'master' ? 'Master of Theology (Advanced Formation Degree)' :
                               'Doctor of Theology (Senior Formation Degree)';
+            
+            const mapping = degreeMap[degreeName];
+            if (!mapping) return;
+
+            const card = document.getElementById(mapping.card);
+            const btn = document.getElementById(mapping.btn);
+            if (!card || !btn) return;
 
             if (isSelected) {
                 selectedDegrees.add(degreeName);
                 btn.classList.add('selected');
                 btn.innerHTML = '<i class="fas fa-check"></i> Selected';
+                card.classList.add('card-selected');
             } else {
                 selectedDegrees.delete(degreeName);
                 btn.classList.remove('selected');
                 btn.innerHTML = '<i class="fas fa-plus"></i> Select This Program';
+                card.classList.remove('card-selected');
             }
         }
 
@@ -1216,7 +1398,9 @@
             });
         }
 
-        // Form validation before submit
+        // ============================================
+        // FORM SUBMIT HANDLER - DIPERBAIKI
+        // ============================================
         document.getElementById('applicationForm').addEventListener('submit', function(e) {
             const programs = document.querySelectorAll('input[name="programs[]"]:checked');
             if (programs.length === 0) {
@@ -1225,10 +1409,46 @@
                 return false;
             }
 
-            // Show loading state
+            // Tampilkan loading state
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+            // Untuk Formspree: biarkan form submit secara normal (redirect ke _next)
+            // Pesan sukses akan ditampilkan oleh Formspree atau kita handle di sini
+            
+            // Opsi: Jika ingin AJAX submit (tanpa redirect), uncomment kode di bawah:
+            /*
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    document.getElementById('applicationForm').style.display = 'none';
+                    document.getElementById('successMessage').classList.add('active');
+                } else {
+                    alert('Something went wrong. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Application to Admin';
+                }
+            }).catch(error => {
+                alert('Error: ' + error.message);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Application to Admin';
+            });
+            */
+        });
+
+        // Check URL params untuk menampilkan pesan sukses (jika Formspree redirect kembali)
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('submitted')) {
+                document.getElementById('applicationForm').style.display = 'none';
+                document.getElementById('successMessage').classList.add('active');
+            }
         });
     </script>
 
