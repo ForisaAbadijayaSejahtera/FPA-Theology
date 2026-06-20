@@ -34,15 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* ============================================
-           CARA GANTI LOGO NAVBAR:
-           1. Siapkan gambar logo Anda (PNG dengan transparansi)
-           2. Upload ke hosting (Imgur, Cloudinary, atau folder lokal)
-           3. Ganti <i class="fas fa-cross"></i> di navbar menjadi:
-              <img src="URL_LOGO_ANDA.png" alt="FPA Logo" class="nav-logo-img">
-           4. Jika pakai folder lokal: <img src="images/logo.png" ...>
-        ============================================ */
-
         /* Navigation */
         nav {
             position: fixed;
@@ -77,7 +68,6 @@
             gap: 0.5rem;
         }
         .logo i { font-size: 1.5rem; }
-        /* Style untuk logo gambar (aktifkan jika pakai img) */
         .nav-logo-img {
             height: 32px;
             width: auto;
@@ -147,13 +137,6 @@
             margin-bottom: 1.5rem;
             animation: float 3s ease-in-out infinite;
         }
-        /* ============================================
-           CARA GANTI GAMBAR GEREJA DI HERO:
-           1. Siapkan gambar gereja Anda (PNG transparan atau JPG)
-           2. Ganti <i class="fas fa-church"></i> di bawah menjadi:
-              <img src="URL_GAMBAR_GEREJA.png" alt="Church" class="hero-church-img">
-           3. Style .hero-church-img sudah didefinisikan di bawah
-        ============================================ */
         .hero-church-img {
             height: 80px;
             width: auto;
@@ -303,13 +286,6 @@
             font-size: 5rem;
             overflow: hidden;
         }
-        /* ============================================
-           CARA GANTI GAMBAR DI ABOUT SYSTEM:
-           1. Siapkan gambar tentang sistem/jejaring gereja
-           2. Ganti <i class="fas fa-book-bible"></i> di img-frame-inner
-              menjadi <img src="URL_GAMBAR_ABOUT.jpg" class="about-img">
-           3. Style .about-img sudah didefinisikan di bawah
-        ============================================ */
         .about-img {
             width: 100%;
             height: 100%;
@@ -367,14 +343,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             border-color: var(--gold);
         }
-
-        /* ============================================
-           STYLE BARU: Visual feedback ketika card DISELECT
-           - Border glow gold
-           - Background berubah
-           - Scale sedikit
-           - Shadow lebih kuat
-        ============================================ */
         .degree-card.card-selected {
             border-color: var(--gold) !important;
             border-width: 2px;
@@ -389,7 +357,6 @@
             transform: scale(1.15);
             transition: transform 0.3s ease;
         }
-
         .degree-level {
             display: inline-block;
             background: var(--gold);
@@ -563,6 +530,11 @@
         .ordination-checkbox:hover {
             background: rgba(201, 168, 76, 0.2);
         }
+        .ordination-checkbox.ordination-active {
+            background: rgba(201, 168, 76, 0.25) !important;
+            border-color: var(--gold) !important;
+            box-shadow: 0 0 15px rgba(201, 168, 76, 0.2);
+        }
         .ordination-checkbox input[type="checkbox"] {
             width: 20px;
             height: 20px;
@@ -687,7 +659,6 @@
             background: rgba(201, 168, 76, 0.1);
             border-color: var(--gold);
         }
-        /* Style ketika checkbox di form tercentang */
         .checkbox-item.form-selected {
             background: rgba(201, 168, 76, 0.15) !important;
             border-color: var(--gold) !important;
@@ -895,18 +866,6 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <!-- ============================================
-                     GANTI LOGO NAVBAR DI SINI
-                     
-                     Cara 1 - Pakai gambar dari URL:
-                     <img src="https://your-domain.com/logo.png" alt="FPA Logo" class="nav-logo-img">
-                     
-                     Cara 2 - Pakai gambar lokal (folder images):
-                     <img src="images/logo-fpa.png" alt="FPA Logo" class="nav-logo-img">
-                     
-                     Cara 3 - Biarkan icon salib (default):
-                     <i class="fas fa-cross"></i>
-                ============================================ -->
                 <i class="fas fa-cross"></i>
                 <span>FPA - ETFDS</span>
             </a>
@@ -929,18 +888,6 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-icon">
-                <!-- ============================================
-                     GANTI GAMBAR GEREJA DI HERO DI SINI
-                     
-                     Cara 1 - Pakai gambar dari URL:
-                     <img src="https://your-domain.com/church.png" alt="Church" class="hero-church-img">
-                     
-                     Cara 2 - Pakai gambar lokal:
-                     <img src="images/gereja-hero.png" alt="Church" class="hero-church-img">
-                     
-                     Cara 3 - Biarkan icon gereja (default):
-                     <i class="fas fa-church"></i>
-                ============================================ -->
                 <i class="fas fa-church"></i>
             </div>
             <h1>FPA - Ecclesiastical Theological Formation Degree System</h1>
@@ -973,21 +920,6 @@
             <div class="about-image">
                 <div class="img-frame">
                     <div class="img-frame-inner">
-                        <!-- ============================================
-                             GANTI GAMBAR ABOUT SYSTEM DI SINI
-                             
-                             Cara 1 - Pakai gambar dari URL:
-                             <img src="https://your-domain.com/about-image.jpg" alt="About" class="about-img">
-                             
-                             Cara 2 - Pakai gambar lokal:
-                             <img src="images/about-system.jpg" alt="About" class="about-img">
-                             
-                             Cara 3 - Biarkan icon book-bible (default):
-                             <i class="fas fa-book-bible"></i>
-                             
-                             TIPS: Gunakan gambar dengan rasio 4:3 atau 1:1
-                             dan resolusi minimal 600x400 pixel untuk hasil optimal.
-                        ============================================ -->
                         <i class="fas fa-book-bible"></i>
                     </div>
                 </div>
@@ -1091,9 +1023,11 @@
             <div class="ordination-text">
                 <h3>Called to Serve</h3>
                 <p>Graduates of the formation system may be considered for ordination into pastoral ministry based on ecclesiastical assessment and leadership affirmation. This pathway ensures that those who serve in church leadership have received proper theological formation and have been recognized by the ecclesiastical community.</p>
-                <div class="ordination-checkbox" onclick="toggleOrdination()">
-                    <input type="checkbox" id="ordination-interest" onchange="event.stopPropagation()">
-                    <label for="ordination-interest">I am also interested in the Ordination Pathway</label>
+                <div class="ordination-checkbox" id="ordination-box">
+                    <input type="checkbox" id="ordination-interest" onchange="handleOrdinationChange(this)">
+                    <label for="ordination-interest" style="cursor: pointer; font-weight: 600; color: var(--navy);">
+                        I am also interested in the Ordination Pathway
+                    </label>
                 </div>
             </div>
         </div>
@@ -1107,22 +1041,6 @@
                 <p>Fill out the form below to connect with our admin team. Select your desired program level(s) and let us guide you through the next steps.</p>
             </div>
             <div class="contact-form fade-in" id="contactForm">
-                <!-- ============================================
-                     KONFIGURASI FORMSPREE
-                     
-                     Form sudah dikonfigurasi ke endpoint Formspree Anda.
-                     Endpoint saat ini: https://formspree.io/f/xojzplgn
-                     
-                     Cara kerja:
-                     1. User klik "Send Application to Admin"
-                     2. Data form dikirim ke server Formspree
-                     3. Formspree meneruskan ke email admin yang terdaftar
-                     4. User melihat pesan sukses di halaman
-                     
-                     Untuk mengganti endpoint Formspree:
-                     Ganti action="https://formspree.io/f/xojzplgn" dengan
-                     action="https://formspree.io/f/ID_FORM_ANDA"
-                ============================================ -->
                 <form id="applicationForm" action="https://formspree.io/f/xojzplgn" method="POST">
                     <div class="form-group">
                         <label for="fullName">Full Name <span class="required">*</span></label>
@@ -1172,7 +1090,7 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="checkbox-item" onclick="toggleCheckbox(this)" style="background: rgba(201, 168, 76, 0.1); border-color: var(--gold);">
+                        <div class="checkbox-item" onclick="toggleCheckbox(this)" style="background: rgba(201, 168, 76, 0.1); border-color: var(--gold);" id="form-item-ordination">
                             <input type="checkbox" name="ordination" value="Yes, interested in Ordination Pathway" id="form-ordination" onchange="event.stopPropagation()">
                             <div>
                                 <label for="form-ordination" style="color: var(--gold-light);">I am also interested in the Ordination Pathway</label>
@@ -1189,7 +1107,6 @@
                     <!-- Hidden fields for Formspree -->
                     <input type="hidden" name="_subject" value="New ETFDS Application">
                     <input type="hidden" name="_template" value="table">
-                    <!-- Redirect kembali ke halaman setelah submit -->
                     <input type="hidden" name="_next" value="">
 
                     <button type="submit" class="submit-btn" id="submitBtn">
@@ -1224,7 +1141,7 @@
         </div>
         <div class="footer-divider"></div>
         <p class="footer-text">Equipping Christian leaders, pastors, and ministers for faithful ministry service through structured theological formation.</p>
-        <p class="copyright">&copy; 2026 FPA - Ecclesiastical Theological Formation Degree System. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 Ecclesiastical Theological Formation Degree System. All rights reserved.</p>
     </footer>
 
     <!-- Floating CTA -->
@@ -1233,14 +1150,10 @@
     </button>
 
     <script>
-        // ============================================
-        // JAVASCRIPT YANG DIPERBAIKI
-        // ============================================
-
         // Selected degrees tracker
         let selectedDegrees = new Set();
 
-        // Mapping degree name ke element ID
+        // Mapping degree name to element IDs
         const degreeMap = {
             'Bachelor of Theology (Formation Degree)': { card: 'card-bachelor', btn: 'btn-bachelor', checkbox: 'prog-bachelor', formItem: 'form-item-bachelor', type: 'bachelor' },
             'Master of Theology (Advanced Formation Degree)': { card: 'card-master', btn: 'btn-master', checkbox: 'prog-master', formItem: 'form-item-master', type: 'master' },
@@ -1290,7 +1203,7 @@
         });
 
         // ============================================
-        // FUNGSI TOGGLE DEGREE - DIPERBAIKI
+        // TOGGLE DEGREE - FIXED
         // ============================================
         function toggleDegree(btn, degreeName) {
             const mapping = degreeMap[degreeName];
@@ -1317,7 +1230,7 @@
                 if (checkbox) checkbox.checked = true;
                 if (formItem) formItem.classList.add('form-selected');
 
-                // AUTO-SCROLL ke form dengan smooth animation
+                // AUTO-SCROLL to form with smooth animation
                 setTimeout(() => {
                     const contactSection = document.getElementById('contact');
                     if (contactSection) {
@@ -1326,34 +1239,58 @@
                             block: 'start'
                         });
                     }
-                }, 400); // Delay sedikit agar user melihat card berubah dulu
+                }, 400);
             }
         }
 
-        // Toggle ordination interest
-        function toggleOrdination() {
-            const checkbox = document.getElementById('ordination-interest');
-            checkbox.checked = !checkbox.checked;
-
+        // ============================================
+        // ORDINATION - FIXED
+        // ============================================
+        function handleOrdinationChange(checkbox) {
+            const ordinationBox = document.getElementById('ordination-box');
             const formCheckbox = document.getElementById('form-ordination');
-            if (formCheckbox) formCheckbox.checked = checkbox.checked;
+            const formItem = document.getElementById('form-item-ordination');
+
+            // Update visual style on ordination section
+            if (checkbox.checked) {
+                ordinationBox.classList.add('ordination-active');
+            } else {
+                ordinationBox.classList.remove('ordination-active');
+            }
+
+            // Sync with form checkbox
+            if (formCheckbox) {
+                formCheckbox.checked = checkbox.checked;
+            }
+
+            // Update visual style on form item
+            if (formItem) {
+                if (checkbox.checked) {
+                    formItem.classList.add('form-selected');
+                } else {
+                    formItem.classList.remove('form-selected');
+                }
+            }
         }
 
         // ============================================
-        // TOGGLE CHECKBOX - DIPERBAIKI dengan 2-way sync
+        // TOGGLE CHECKBOX - FIXED with 2-way sync
         // ============================================
         function toggleCheckbox(item) {
+            // Only process if click is NOT on the checkbox itself
+            if (event.target.type === 'checkbox') return;
+
             const checkbox = item.querySelector('input[type="checkbox"]');
             checkbox.checked = !checkbox.checked;
 
-            // Update visual style pada form item
+            // Update visual style
             if (checkbox.checked) {
                 item.classList.add('form-selected');
             } else {
                 item.classList.remove('form-selected');
             }
 
-            // Sync ke degree card (2-way binding)
+            // Sync to degree card if program checkbox
             const value = checkbox.value;
             if (value && value.includes('Bachelor')) {
                 syncCardWithForm('bachelor', checkbox.checked);
@@ -1361,15 +1298,29 @@
                 syncCardWithForm('master', checkbox.checked);
             } else if (value && value.includes('Doctor')) {
                 syncCardWithForm('doctor', checkbox.checked);
+            } else if (value && value.includes('Ordination')) {
+                // Sync to ordination section
+                const ordCheckbox = document.getElementById('ordination-interest');
+                const ordBox = document.getElementById('ordination-box');
+                if (ordCheckbox) {
+                    ordCheckbox.checked = checkbox.checked;
+                    if (ordBox) {
+                        if (checkbox.checked) {
+                            ordBox.classList.add('ordination-active');
+                        } else {
+                            ordBox.classList.remove('ordination-active');
+                        }
+                    }
+                }
             }
         }
 
-        // Sinkronisasi card dengan checkbox form
+        // Sync card with form checkbox
         function syncCardWithForm(degreeType, isSelected) {
             const degreeName = degreeType === 'bachelor' ? 'Bachelor of Theology (Formation Degree)' :
                               degreeType === 'master' ? 'Master of Theology (Advanced Formation Degree)' :
                               'Doctor of Theology (Senior Formation Degree)';
-            
+
             const mapping = degreeMap[degreeName];
             if (!mapping) return;
 
@@ -1399,7 +1350,7 @@
         }
 
         // ============================================
-        // FORM SUBMIT HANDLER - DIPERBAIKI
+        // FORM SUBMIT HANDLER - FIXED
         // ============================================
         document.getElementById('applicationForm').addEventListener('submit', function(e) {
             const programs = document.querySelectorAll('input[name="programs[]"]:checked');
@@ -1409,40 +1360,13 @@
                 return false;
             }
 
-            // Tampilkan loading state
+            // Show loading state
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-            // Untuk Formspree: biarkan form submit secara normal (redirect ke _next)
-            // Pesan sukses akan ditampilkan oleh Formspree atau kita handle di sini
-            
-            // Opsi: Jika ingin AJAX submit (tanpa redirect), uncomment kode di bawah:
-            /*
-            e.preventDefault();
-            const formData = new FormData(this);
-            fetch(this.action, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    document.getElementById('applicationForm').style.display = 'none';
-                    document.getElementById('successMessage').classList.add('active');
-                } else {
-                    alert('Something went wrong. Please try again.');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Application to Admin';
-                }
-            }).catch(error => {
-                alert('Error: ' + error.message);
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Application to Admin';
-            });
-            */
         });
 
-        // Check URL params untuk menampilkan pesan sukses (jika Formspree redirect kembali)
+        // Check URL params for success message (if Formspree redirects back)
         window.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('submitted')) {
